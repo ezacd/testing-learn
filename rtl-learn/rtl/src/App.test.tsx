@@ -1,10 +1,31 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { RootState } from './store/store';
+import { getCounterValue } from './store/reducers/getCounterValue/getCounterValue';
+import counterReducer, {
+  decrement,
+  increment,
+} from '@/store/reducers/counterReducer';
 
-describe('Todo List', () => {
+describe('redux', () => {
   test('test', () => {
-    render(<App />);
-    expect(screen.getByText(123)).toBeInTheDocument();
+    const fakeState: RootState = {
+      counter: { value: 0 },
+    };
+
+    expect(getCounterValue(fakeState)).toBe(0);
+  });
+});
+
+describe('reducers', () => {
+  test('increment', () => {
+    expect(counterReducer({ value: 0 }, increment())).toEqual({ value: 1 });
+  });
+
+  test('decrement', () => {
+    expect(counterReducer({ value: 0 }, decrement())).toEqual({ value: -1 });
+  });
+
+  test('empty', () => {
+    expect(counterReducer(undefined, increment())).toEqual({ value: 1 });
   });
 });
