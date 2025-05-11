@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "wdio": "wdio run ./wdio.conf.js",
+    "test:e2e": "npx wdio run ./wdio.conf.js"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.27.1",
