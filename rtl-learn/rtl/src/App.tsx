@@ -3,6 +3,7 @@ import { RootState } from './store/store';
 import { decrement, increment } from './store/reducers/counterReducer';
 import { getCounterValue } from './store/reducers/getCounterValue/getCounterValue';
 import Hello from './pages/Hello';
+import UsersForTest from './pages/UserForTest';
 
 export default function App() {
   const count = useSelector((state: RootState) => getCounterValue(state));
@@ -26,6 +27,7 @@ export default function App() {
         </button>
       </div>
       <Hello />
+      <UsersForTest />
     </div>
   );
 }
